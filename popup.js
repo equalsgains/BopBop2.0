@@ -85,8 +85,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", "Bearer " + access_token);
             },
-            success: function (getCourse) {
+            success: function (getCourse, status, xhr) {
                 courseObj = getCourse;
+                var userID = xhr.getResponseHeader('X-Canvas-User-Id');
+                console.log(userID);
                 c.name = courseObj.name;
                 c.start_at = courseObj.start_at;
                 c.end_at = courseObj.end_at;

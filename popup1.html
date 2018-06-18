@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="jquery-2.1.3.min.js">
+    </script>
+    <title>CanvasDates UI</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styling/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="" href="styling/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Dosis:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+</head>
+<body>
+    <div id="overlay">
+        <div id="text">
+            <h3>Set Token <a href="#" id="overlayOptions" target="_blank">HERE</a>
+                <h3>
+        </div>
+    </div>
+    <div id="overlay1">
+        <div id="text">
+            <h3>"Unauthorized"</h3>
+            <ol class="orderedList">
+                <li>Make sure that you're not masquerading as a student.</li>
+                <li>Reset Token if needed by clicking <a id="overlayOptions1" href="#" target="_blank">HERE</a></li>
+                <li>
+                    <button class=" btn btn-primary" id="refreshTab1" class="btn btn-primary align-middle">Try Again</button>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div id="overlay2">
+        <div id="text">
+            <h3>Something didn't go right :'(</h3>
+            <ol class="orderedList">
+                <li>Make sure that you're in a course</li>
+                <li>
+                    <button class=" btn btn-primary" id="refreshTab" class="btn btn-primary align-middle">Try Again</button>
+                </li>
+            </ol>
+            
+        </div>
+    </div>
+    <div id="ui" class="container">
+        <a href="#" id="optionsLink" target="_blank">
+            <div id="optionsBTN" class="btn"><i id="settingsIcon" class="fa fa-cogs fa-2x"></i></div>
+        </a>
+        <div id="container">
+        </div>
+        <div class="bopBop"></div>
+        <div class="btn btn-primary align-middle loaders" id="loadingD"><i class="fa fa-spinner fa-spin"></i> Retrieving Dates</div>
+        <button id="retrieve" class="hideItem btn btn-primary align-middle">Check Course/Section/Term Dates</button>
+        <div></div>
+        <button class=" btn btn-primary" id="links" class="btn btn-primary align-middle">Link Validator</button>
+        <button class=" btn btn-primary" id="linkCheck" class="btn btn-primary align-middle">Check Missing Files From Current Page</button>
+        <button class="btn btn-primary align-middle loaders" id="loadingT"><i class="fa fa-spinner fa-spin"></i> Waiting on the teacher</button>
+        <button id="recentTeacherBTN" class="hideItem btn btn-primary align-middle" title="Retrieve Email From The Last Teacher Who Accessed This Course">Get Teacher's Email</button>
+        <button class="btn btn-primary align-middle loaders hideItem" id="noTeacher">I wasn't able to find a teacher. Click <a href="#" target="_blank" id="peopleTab">ME</a> to see all enrollents</button>
+        <h4 class="languageChange">Change Your Language To:</h4>
+        <button class="btn btn-primary" id="english" class="btn btn-primary align-left" title="Change Your Language To English">English</button>
+        <button class="btn btn-primary" id="spanish" class="btn btn-primary align-left" title="Change Language To Spanish">Español</button>
+        <button class="btn btn-primary" id="portuguese" class="btn btn-primary align-left" title="Change Language To Portuguese">Portuguese</button>
+    </div>
+    <script src="typed.js">
+    </script>
+    <script src="popup.js">
+
+    </script>
+</body>
+
+</html>
