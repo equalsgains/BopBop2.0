@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Bop Bop Options</title>
+  <link rel="stylesheet" type="" href="styling/bootstrap.min.css">
+  <link rel="stylesheet" type="" href="styling/main.css">
+  <script src="options.js"></script>
+</head>
+<body>
+<div class="container" id="insertTokenUI">
+  <div class="container" id="tokenInput">
+      <h3 id="tokenTitle"> Please Enter Your Access Token: </h3>
+      <div class="Message hideItem fixed" id="saveMessage">
+          YOU'RE GOOD TO GO! REFRESH ANY TABS THAT WERE LOADED BEFORE ADDING THE TOKEN.
+      </div>
+      <div class="hideItem Message" id="resetMessage">
+          You're Token Has Been Cleared; Please Enter A New Token
+      </div>
+      <input type='text' id='accesstoken' value="">
+  </div>
+</div>
+<div class="container BTNcontainer">
+  <button class=" btn btn-primary" id="resetToken" class="btn btn-primary">Delete Token</button>
+  <button class=" btn btn-primary" id="saveToken" class="btn btn-primary">Save Token</button>
+</div>
+<script src="jquery-2.1.3.min.js"> </script>
+</body>
+</html>
