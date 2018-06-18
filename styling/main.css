@@ -1,7 +1,6 @@
 body {
-  min-height: 600px;
-  height: 100vh;
-  width: 525px;
+  height: 600px;
+  width: 530px;
   background: #141e30; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
@@ -14,7 +13,9 @@ body {
     #141e30
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #ffffff;
-  padding: 1em;
+  padding: .8em;
+  overflow: hidden !important;
+
 }
 a,
 a:visited,
@@ -89,7 +90,7 @@ p {
 
 /* buttons */
 .btn-primary {
-  background: #fc7ab1;
+  background: #54a9ff;
   border: none;
   color: #141e30;
   font-weight: 700;
@@ -163,9 +164,8 @@ input[type="submit"]:hover {
 /* course status */
 .status-container {
     background: rgba(0, 0, 0, 0.3);
-    height: 230px;
     margin-top: .8em;
-    padding: .8em;
+    padding: 1em;
 
 }
 .hiddenSpace {
@@ -177,9 +177,15 @@ input[type="submit"]:hover {
 .statusHeadline {
     border-bottom: 1px solid #fc7ab1;
     text-shadow: 1px 1px #141e30;
-    width: 60%;
+    width: 50%;
     margin: auto;
+}
+.status-container {
+    font-size: 90%;
 }
 ul {
     list-style: none;
+}
+.col-xs-3 {
+    right: 40px;
 }
