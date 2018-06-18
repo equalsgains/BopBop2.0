@@ -163,7 +163,7 @@ input[type="submit"]:hover {
 /* course status */
 .status-container {
     background: rgba(0, 0, 0, 0.3);
-    height: 200px;
+    height: 230px;
     margin-top: .8em;
     padding: .8em;
 
@@ -179,4 +179,7 @@ input[type="submit"]:hover {
     text-shadow: 1px 1px #141e30;
     width: 60%;
     margin: auto;
+}
+ul {
+    list-style: none;
 }
