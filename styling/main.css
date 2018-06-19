@@ -1,5 +1,5 @@
 body {
-  height: 600px;
+  height: 650px;
   width: 530px;
   background: #141e30; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -24,6 +24,7 @@ a:active,
 a:link {
   text-decoration: none;
   color: inherit;
+  border: 0;
 }
 .container {
   margin: auto;
@@ -34,7 +35,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-family: "Raleway";
 }
 p {
@@ -86,6 +88,10 @@ p {
   color: inherit;
   font-size: 1.01em;
 }
+
+.welcome-container {
+    margin-top: -13px;
+}
 /* END NAME AND SETTINGS */
 
 /* buttons */
@@ -99,11 +105,10 @@ p {
 }
 .btn-primary:hover {
     background: #54a9ff;
-    color: #141e30;
 }
 
 .btn-success {
-    background: #449d44;
+    background: #fc7ab1;
     border: none;
     color: #ffffff;
     font-weight: 700;
@@ -112,9 +117,14 @@ p {
     transition: 300ms;
   }
   .btn-success:hover {
-      background: #fc7ab1;
+      background: #54a9ff;
   }
-
+.btn-sm {
+    background: none;
+}
+.btn-sm:hover {
+    color: #fc7ab1;
+}
 /* DATES */
 .dates-container {
   margin-top: .8em;
@@ -140,7 +150,7 @@ input[type="text"] {
 
 }
 input[type="submit"] {
-    background-color: #449d44;
+    background-color: #fc7ab1;
     color: #ffffff;
     text-shadow: 1px 1px #141e30;
     padding: .5em 1em;
@@ -151,7 +161,7 @@ input[type="submit"] {
     transition: 300ms;
 }
 input[type="submit"]:hover {
-    background: #fc7ab1;
+    background: #54a9ff;
 }
 
 /* additional features */
@@ -177,7 +187,8 @@ input[type="submit"]:hover {
 .statusHeadline {
     border-bottom: 1px solid #fc7ab1;
     text-shadow: 1px 1px #141e30;
-    width: 50%;
+    padding-bottom: 4px;
+    width: 45%;
     margin: auto;
 }
 .status-container {
