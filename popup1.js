@@ -2,18 +2,18 @@ var domDomain = document.domain;
 $('#optionsLink').attr('href', 'chrome-extension://' + domDomain + '/options.html');
 $('#overlayOptions').attr('href', 'chrome-extension://' + domDomain + '/options.html');
 $('#overlayOptions1').attr('href', 'chrome-extension://' + domDomain + '/options.html');
-// document.getElementById("refreshTab").onclick = function () {
-//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//         chrome.tabs.update(tabs[0].id, { url: tabs[0].url });
-//     });
-//     location.reload();
-// };
-// document.getElementById("refreshTab1").onclick = function () {
-//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//         chrome.tabs.update(tabs[0].id, { url: tabs[0].url });
-//     });
-//     location.reload();
-// };
+document.getElementById("refreshTab").onclick = function () {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.update(tabs[0].id, { url: tabs[0].url });
+    });
+    location.reload();
+};
+document.getElementById("refreshTab1").onclick = function () {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.update(tabs[0].id, { url: tabs[0].url });
+    });
+    location.reload();
+};
 var access_token = localStorage.Access_token;
 var c = {};
 var t = {};
@@ -34,7 +34,6 @@ var today = new Date();
 var checking = setInterval(function () { checkIfDone() }, 1500);
 var checkLinks;
 var today = new Date();
-var courseObj = {}; 
 function checkLinks() {
     chrome.tabs.executeScript({
         file: 'checkLinks.js'
@@ -82,7 +81,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         $.ajax({
             url: 'https://' + domain + '/api/v1/courses/' + courseNum + '/',
             type: 'GET',
-            data: 'per_page=100&cross_domain_login=siteadmin.instructure.com&include[]=sections&include[]=teachers',
+            data: 'per_page=100&cross_domain_login=siteadmin.instructure.com&include[]=sections',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("Authorization", "Bearer " + access_token);
             },
@@ -95,21 +94,48 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                 c.end_at = courseObj.end_at;
                 c.root_account = courseObj.root_account_id;
                 c.term = courseObj.enrollment_term_id;
-                // getTermDates();
-                console.log('got terms')
+                getTermDates();
+                getMostRecent(function () {
+                    $('#loadingT').addClass("hideItem");
+                    $('#recentTeacherBTN').removeClass('hideItem');
+                    $('#recentTeacherBTN').fadeOut(300);
+                    $('#recentTeacherBTN').fadeIn("slow");
+                });
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                // if (xhr.status == 404 && access_token !== undefined) {
-                //     setTimeout(function () {
-                //     $('#overlay2').css({ "display": "block" });
-                //     }, 5000);
-                // }
-                // if (xhr.status == 401 && access_token !== undefined) {
-                //     $('#overlay1').css({ "display": "block" });
-                // }
+                if (xhr.status == 404 && access_token !== undefined) {
+                    setTimeout(function () {
+                    $('#overlay2').css({ "display": "block" });
+                    }, 5000);
+                }
+                if (xhr.status == 401 && access_token !== undefined) {
+                    $('#overlay1').css({ "display": "block" });
+                }
             }
         });
-
+        $.ajax({
+            url: 'https://' + domain + '/api/v1/courses/' + courseNum + '/sections',
+            type: 'GET',
+            data: 'per_page=100&cross_domain_login=siteadmin.instructure.com',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+            },
+            success: function (response) {
+                sections = response;
+                sectionsDone = true;
+                for (var i = 0; i < sections.length; i++) {
+                    s.push(sections[i] = {
+                        name: sections[i].name,
+                        start_at: sections[i].start_at,
+                        end_at: sections[i].end_at,
+                        sectionId: sections[i].id
+                    });
+                };
+                setTimeout(function () {
+                    clearInterval(checking);
+                }, 300);
+            }
+        });
         function getTermDates() {
             $.ajax({
                 url: 'https://' + domain + '/api/v1/accounts/' + c.root_account + '/terms/',
@@ -187,7 +213,17 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                 }
             });
         };
-        // spitRecentTeacher();
+        $('#recentTeacherBTN').on("click", function () {
+            tEmail = teacherObj[0].email;
+            $(this).css({ "display": "none" });
+            Typed.new('.bopBop', {
+                strings: ["Bop ", "Bop "],
+                typeSpeed: 0
+            }); setTimeout(function () {
+                $('.loader').css({ "display": "none" });
+                spitRecentTeacher();
+            }, 950);
+        });
     });
 });
 
@@ -230,13 +266,13 @@ $('#retrieve').on("click", function () {
         spitAllinfo();
     }, 950);
 });
-// window.addEventListener('DOMContentLoaded', function () {
-//     var link = document.getElementById('links');
-//     link.addEventListener('click', function () {
-//         var newURL = 'http://' + domain + '/courses/' + courseNum + '/link_validator?cross_domain_login=siteadmin.instructure.com';
-//         chrome.tabs.create({ url: newURL });
-//     });
-// });
+window.addEventListener('DOMContentLoaded', function () {
+    var link = document.getElementById('links');
+    link.addEventListener('click', function () {
+        var newURL = 'http://' + domain + '/courses/' + courseNum + '/link_validator?cross_domain_login=siteadmin.instructure.com';
+        chrome.tabs.create({ url: newURL });
+    });
+});
 $('#linkCheck').on('click', function () {
     checkLinks();
 });
