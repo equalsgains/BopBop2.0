@@ -21,7 +21,7 @@ function getCourseInfo() {
     type: "GET",
     data: "cross_domain_login=siteadmin.instructure.com",
     beforeSend: function(xhr) {
-      xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+      xhr.setRequestHeader("Authorization", "Bearer " + user.token);
     },
     success: function(response, status, xhr) {
       course = response;
@@ -34,3 +34,14 @@ function getCourseInfo() {
     }
   });
 }
+
+// display data
+function displayCourse (){
+  $("#container").append("<p>Start:" + course.sta+ "</p>");
+}
+
+// eventlisteners
+$("#retrieve").on("click", function(){
+  displayCourse();
+  $("#displayContainer").removeClass("hideItem");
+});
