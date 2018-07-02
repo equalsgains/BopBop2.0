@@ -15,4 +15,3 @@ document.querySelector('.user_content').querySelectorAll('a').forEach((item) => 
         });
     }
 });
-

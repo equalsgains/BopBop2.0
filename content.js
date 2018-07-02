@@ -1,9 +1,10 @@
-course1 = document.URL.substring(document.URL.indexOf("/courses/") + 9);
+let course1 = document.URL.substring(document.URL.indexOf("/courses/") + 9);
 if (course1.indexOf("/") !== -1) {
   course = course1.substring(0, course1.indexOf("/"));
 } else {
   course = course1;
 }
+console.log(course1);
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   console.log(

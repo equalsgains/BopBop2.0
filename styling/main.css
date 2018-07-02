@@ -7,14 +7,16 @@ body {
   color: #ffffff;
   padding: 0.8em;
   overflow: hidden !important;
+  line-height: 94%;
 }
 a,
 a:visited,
 a:hover,
 a:active,
-a:link {
+a:link,
+a:focus {
   text-decoration: none;
-  color: inherit;
+  color: inherit !important;
   border: 0;
 }
 .container {
@@ -34,11 +36,9 @@ p {
   font-family: "Abel";
   font-size: 1.2em;
 }
-
 .vertical {
   vertical-align: -webkit-baseline-middle;
 }
-
 .noborder {
   border-radius: 0px;
   border: none;
